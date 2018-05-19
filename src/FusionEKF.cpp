@@ -90,6 +90,7 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
       double P_y =  -(measurement_pack.raw_measurements_[0] * sin(measurement_pack.raw_measurements_[1]));
       ekf_.x_ << P_x, P_y, 0, 0;
       cout << "Finish Radar Init!" << endl;
+      cout << ekf_.x_ << endl;
     }
     else if (measurement_pack.sensor_type_ == MeasurementPackage::LASER) {
       /**
@@ -97,14 +98,15 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
       */
       cout << "laser init start" << endl;
       ekf_.x_ << measurement_pack.raw_measurements_[0], measurement_pack.raw_measurements_[1], 0, 0;
-      cout << "laser init finish" << endl;
+      cout << "laser init finish"<< endl;
+      cout << ekf_.x_ << endl;
     }
 
     // done initializing, no need to predict or update
     is_initialized_ = true;
     return;
   }
-
+  cout << "I'm here!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
   /*****************************************************************************
    *  Prediction
    ****************************************************************************/
@@ -116,9 +118,9 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
      * Update the process noise covariance matrix.
      * Use noise_ax = 9 and noise_ay = 9 for your Q matrix.
    */
-   // Set the process noice for x and y
-   int noise_ax = 9;
-   int noise_ay = 9;
+  // Set the process noice for x and y
+  int noise_ax = 9;
+  int noise_ay = 9;
    
   // Calculate the change in time.
   float dt = (measurement_pack.timestamp_ - previous_timestamp_) / 1000000.0;	//dt - expressed in seconds
@@ -133,6 +135,9 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
 	          0,pow(dt,4)*noise_ay/4,0,pow(dt,3)*noise_ay/2,
 	          pow(dt,3)*noise_ax/2,0,pow(dt,2)*noise_ax,0,
 	          0,(pow(dt,3)/2)*noise_ay ,0, pow(dt,2)*noise_ay;
+            
+  cout << "===================================================Q:" << endl;
+  cout << ekf_.Q_ << endl;
   
   ekf_.Predict();
 
