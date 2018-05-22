@@ -1,6 +1,7 @@
 #ifndef KALMAN_FILTER_H_
 #define KALMAN_FILTER_H_
 #include "Eigen/Dense"
+#include "tools.h"
 
 class KalmanFilter {
 public:
@@ -32,6 +33,11 @@ public:
    * Destructor
    */
   virtual ~KalmanFilter();
+  
+  /**
+  * Print all of the KalmanFilter varibles, used for debugging
+  */ 
+  void print_all_variables();
 
   /**
    * Init Initializes Kalman filter
@@ -63,7 +69,9 @@ public:
    * @param z The measurement at k+1
    */
   void UpdateEKF(const Eigen::VectorXd &z);
-
+private:
+  Tools tools;
+  const double pi = 3.1415926535897;
 };
 
 #endif /* KALMAN_FILTER_H_ */

@@ -45,7 +45,7 @@ int main()
 
     if (length && length > 2 && data[0] == '4' && data[1] == '2')
     {
-
+      
       auto s = hasData(std::string(data));
       if (s != "") {
       	
@@ -138,7 +138,7 @@ int main()
         ws.send(msg.data(), msg.length(), uWS::OpCode::TEXT);
       }
     }
-
+    
   });
 
   // We don't need this since we're not using HTTP but if it's removed the program
