@@ -50,19 +50,12 @@ void KalmanFilter::Update(const VectorXd &z) {
   */
   print_all_variables();
   VectorXd z_pred = H_ * x_;
-  std::cout << "*****************" << std::endl;
-  std::cout << z << std::endl;
-  std::cout << " --------------- " << std::endl; 
-  std::cout << z_pred << std::endl;
   VectorXd y = z - z_pred;
-  std::cout << "2!" << std::endl;
   MatrixXd Ht = H_.transpose();
-  std::cout << "3" << std::endl;
   MatrixXd S = H_ * P_ * Ht + R_;
   MatrixXd Si = S.inverse();
   MatrixXd PHt = P_ * Ht;
   MatrixXd K = PHt * Si;
-  std::cout << "Finish!" << std::endl;
   //new estimate
   x_ = x_ + (K * y);
   long x_size = x_.size();
@@ -81,7 +74,6 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
   /* Check there is no division by 0 and transfer the cartsian
   *  predicted state to polar also denoted h(x').
   */ 
-  std::cout << "Radar Update" << std::endl;
   print_all_variables();
   if (x_[0] == 0)
   {
@@ -97,10 +89,8 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
   else
   {
     z_pred[1] = atan2(x_[1],x_[0]);
-    std::cout << "1" << std::endl;
     z_pred[2] = (x_[0]*x_[2] + x_[1]*x_[3])/
                 (sqrt(pow(x_[0],2) + pow(x_[1],2)));
-                std::cout << "2" << std::endl;
   }
   z_pred[0] = sqrt(pow(x_[0],2) + pow(x_[1],2));
   
