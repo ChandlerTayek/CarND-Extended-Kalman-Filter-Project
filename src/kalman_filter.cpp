@@ -1,5 +1,4 @@
 #include "kalman_filter.h"
-#include "tools.h"
 #include <iostream>
 
 using Eigen::MatrixXd;
@@ -79,13 +78,11 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
 
   VectorXd z_pred = VectorXd(3);
   
-  double almost_zero = 0.000001;
-  
-  // Check there is no division by 0.
-  std::cout << "HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!" << std::endl;
-  std::cout << x_ << std::endl;
-  std::cout << "---------" << std::endl;
-  std::cout << x_[0] << std::endl;
+  /* Check there is no division by 0 and transfer the cartsian
+  *  predicted state to polar also denoted h(x').
+  */ 
+  std::cout << "Radar Update" << std::endl;
+  print_all_variables();
   if (x_[0] == 0)
   {
     // Compute the arctan of Py/Px.
@@ -93,14 +90,17 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
   }
   else if (sqrt(pow(x_[0],2) + pow(x_[1],2)) == 0)
   {
+
     z_pred[2] = (x_[0]*x_[2] + x_[1]*x_[3])/
                 (almost_zero);
   }
   else
   {
     z_pred[1] = atan2(x_[1],x_[0]);
+    std::cout << "1" << std::endl;
     z_pred[2] = (x_[0]*x_[2] + x_[1]*x_[3])/
                 (sqrt(pow(x_[0],2) + pow(x_[1],2)));
+                std::cout << "2" << std::endl;
   }
   z_pred[0] = sqrt(pow(x_[0],2) + pow(x_[1],2));
   
@@ -118,9 +118,9 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
       y[1] += 2*pi;
     }
   }
-  MatrixXd Hj =  tools.CalculateJacobian(z);
-  MatrixXd Ht = Hj.transpose();
-  MatrixXd S = Hj* P_ * Ht + R_;
+
+  MatrixXd Ht = H_.transpose();
+  MatrixXd S = H_* P_ * Ht + R_;
   MatrixXd Si = S.inverse();
   MatrixXd PHt = P_ * Ht;
   MatrixXd K = PHt * Si;

@@ -1,7 +1,6 @@
 #ifndef KALMAN_FILTER_H_
 #define KALMAN_FILTER_H_
 #include "Eigen/Dense"
-#include "tools.h"
 
 class KalmanFilter {
 public:
@@ -70,7 +69,7 @@ public:
    */
   void UpdateEKF(const Eigen::VectorXd &z);
 private:
-  Tools tools;
+  const double almost_zero = 0.000001;
   const double pi = 3.1415926535897;
 };
 
