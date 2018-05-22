@@ -48,7 +48,7 @@ void KalmanFilter::Update(const VectorXd &z) {
   TODO:
     * update the state by using Kalman Filter equations
   */
-  print_all_variables();
+  //print_all_variables();
   VectorXd z_pred = H_ * x_;
   VectorXd y = z - z_pred;
   MatrixXd Ht = H_.transpose();
@@ -74,7 +74,7 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
   /* Check there is no division by 0 and transfer the cartsian
   *  predicted state to polar also denoted h(x').
   */ 
-  print_all_variables();
+  //print_all_variables();
   if (x_[0] == 0)
   {
     // Compute the arctan of Py/Px.
