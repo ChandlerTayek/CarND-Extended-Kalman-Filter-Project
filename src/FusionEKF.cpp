@@ -62,7 +62,7 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
 
 
   /*****************************************************************************
-   *  Initialization
+   *  Initialization                                                           *
    ****************************************************************************/
   if (!is_initialized_) {
     // first measurement
@@ -72,16 +72,18 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
 
     if (measurement_pack.sensor_type_ == MeasurementPackage::RADAR) {
       /**
-      Convert radar from polar to cartesian coordinates and initialize state.
+      * Convert radar from polar to cartesian coordinates and initialize state.
       */
+      cout << "Radar first" << endl;
       double P_x = measurement_pack.raw_measurements_[0] * cos(measurement_pack.raw_measurements_[1]);
       double P_y =  (measurement_pack.raw_measurements_[0] * sin(measurement_pack.raw_measurements_[1]));
       ekf_.x_ << P_x, P_y, 0, 0;
     }
     else if (measurement_pack.sensor_type_ == MeasurementPackage::LASER) {
       /**
-      Initialize state.
+      * Initialize state for a laser measurement.
       */
+      cout << "Lidar first" << endl;
       ekf_.x_ << measurement_pack.raw_measurements_[0], measurement_pack.raw_measurements_[1], 0, 0;
     }
 
@@ -91,7 +93,7 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
   }
 
   /*****************************************************************************
-   *  Prediction
+   *  Prediction                                                               *
    ****************************************************************************/
   // Set the process noice for x and y
   int noise_ax = 9;
@@ -110,12 +112,16 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
 	           0, pow(dt,4)*noise_ay/4, 0, pow(dt,3)*noise_ay/2,
 	           pow(dt,3)*noise_ax/2, 0, pow(dt,2)*noise_ax, 0,
 	           0, (pow(dt,3)/2)*noise_ay, 0, pow(dt,2)*noise_ay;
-            
+  cout << "Before Predict" << endl;
+  ekf_.print_all_variables();          
   ekf_.Predict();
+  cout << "After Predict" << endl;
+  ekf_.print_all_variables();
   /*****************************************************************************
-   *  Update
+   *  Update                                                                   *
    ****************************************************************************/
   if (measurement_pack.sensor_type_ == MeasurementPackage::RADAR) {
+    cout << "radar Update" << endl;
     // Set the measurement covariance matrix
     ekf_.R_ = R_radar_;
     
@@ -135,7 +141,8 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
     // Laser updates
     ekf_.Update(measurement_pack.raw_measurements_);
   }
-
+  cout << "After Update" << endl;
+  ekf_.print_all_variables(); 
   // print the output
   cout << "x_ = " << ekf_.x_ << endl;
   cout << "P_ = " << ekf_.P_ << endl;
