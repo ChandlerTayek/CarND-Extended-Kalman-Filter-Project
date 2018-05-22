@@ -34,20 +34,14 @@ void KalmanFilter::Init(VectorXd &x_in, MatrixXd &P_in, MatrixXd &F_in,
 }
 
 void KalmanFilter::Predict() {
-  /**
-  TODO:
-    * predict the state
-  */
+  // Predict the new state
   x_ = F_ * x_;
   MatrixXd Ft = F_.transpose();
 	P_ = F_ * P_ * Ft + Q_; 
 }
 
 void KalmanFilter::Update(const VectorXd &z) {
-  /**
-  TODO:
-    * update the state by using Kalman Filter equations
-  */
+  // update the state by using Kalman Filter equations
   //print_all_variables();
   VectorXd z_pred = H_ * x_;
   VectorXd y = z - z_pred;
@@ -64,11 +58,8 @@ void KalmanFilter::Update(const VectorXd &z) {
 }
 
 void KalmanFilter::UpdateEKF(const VectorXd &z) {
-  /**
-  TODO:
-    * update the state by using Extended Kalman Filter equations
-  */
-
+  // update the state by using Extended Kalman Filter equations
+  
   VectorXd z_pred = VectorXd(3);
   
   /* Check there is no division by 0 and transfer the cartsian
