@@ -67,39 +67,60 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
   */ 
   //TODO: Clearn up how the h(x') function uses varibles and flows.
   //      Alos test to make sure it is handling the 0 cases correctly
-  /**
-  * Range
-  * - you can always calculate rho without fear of undefined behavior
-  */
-  rho = sqrt(pow(x_[0],2) + pow(x_[1],2)
-  z_pred[0] = rho;
+  // - 
   
-  // Numerator of rho_dot
-  rho_dot_numerator = x_[0]*x_[2] + x_[1]*x_[3];
-  // Check for division by 0
-  if (x_[0] == 0)
-  {
+  
+  // Range
+  double rho = 0;
+
+  // Bearing
+  double phi = 0;
+  
+  // Radial Velocity
+  double rho_dot = 0;
+  
+  // Create a place holder to reduce repeat math
+  double rho_dot_numerator = x_[0]*x_[2] + x_[1]*x_[3];
+  
+  // Set all of the functions for each value created above
+  rho = sqrt(pow(x_[0],2) + pow(x_[1],2));
+  
+  // you can always calculate rho without fear of undefined behavior
+
+
+  // Check the cases of dividing by 0
+  if (rho == 0) {
+    // If the rho is 0 then x_[0] is 0
+    
     // Compute the arctan of Py/Px.
-    z_pred[1] = atan2(x_[1], almost_zero);
-  }
-  else if (rho == 0)
-  {
+    phi = atan2(x_[1], almost_zero);
+  
     // Radial Velocity with correction of 0 in the denominator
-    z_pred[2] = (rho_dot_numerator)/
+    rho_dot = (rho_dot_numerator)/
                 (almost_zero);
+        
+  }
+  else if (x_[0] == 0) {
+    // Compute the arctan of Py/Px.
+    phi = atan2(x_[1], almost_zero);
+    
+    rho_dot = (rho_dot_numerator)/
+                (rho);
+    
   }
   else
-  {
-    // Bearing
+  {    
     phi = atan2(x_[1],x_[0]);
-    
-    // Radial Velocity
+  
     rho_dot = (rho_dot_numerator)/
                 (rho);
                 
-    z_pred[1] = phi;
-    z_pred[2] = rho_dot;
   }
+  
+  // Set the polar predicted state to the translated values
+  z_pred[0] = rho;
+  z_pred[1] = phi;
+  z_pred[2] = rho_dot;
   
 
   VectorXd y = z - z_pred;
