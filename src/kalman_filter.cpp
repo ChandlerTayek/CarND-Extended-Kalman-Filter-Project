@@ -124,7 +124,7 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
   
 
   VectorXd y = z - z_pred;
-  // Adjust the pi angle to be between -pi and pi
+  // Adjust the phi angle to be between -pi and pi
   while (y[1] < -pi || y[1] > pi)
   {
     if (y[1] > pi)
