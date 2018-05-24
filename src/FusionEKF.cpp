@@ -86,7 +86,9 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
       cout << "Lidar first" << endl;
       ekf_.x_ << measurement_pack.raw_measurements_[0], measurement_pack.raw_measurements_[1], 0, 0;
     }
-
+    // Initialize frist time stamp
+    previous_timestamp_ = measurement_pack.timestamp_;
+    
     // done initializing, no need to predict or update
     is_initialized_ = true;
     return;
