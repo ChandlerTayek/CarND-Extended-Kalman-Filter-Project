@@ -61,28 +61,29 @@ MatrixXd Tools::CalculateJacobian(const VectorXd& x_state) {
 	float py = x_state(1);
 	float vx = x_state(2);
 	float vy = x_state(3);
-
-	//check division by zero
-    if(px && py == 0)
-    {
-        cerr << "Divide by zero" << endl;
-    }
+  
+  double pythag = pow(px, 2) + pow(py, 2);
+  
+  if(px && py == 0)
+  {
+      cerr << "Divide by zero" << endl;
+  }
 	//compute the Jacobian matrix
-    else
-    {
-        Hj(0, 0) = px/(sqrt(pow(px, 2) + pow(py, 2)));
-        Hj(0, 1) = py/(sqrt(pow(px, 2) + pow(py, 2)));
-        Hj(0, 2) = 0;
-        Hj(0, 3) = 0;
-        Hj(1, 0) = -py/(pow(px, 2) + pow(py, 2));
-        Hj(1, 1) = px/(pow(px, 2) + pow(py, 2));
-        Hj(1, 2) = 0;
-        Hj(1, 3) = 0;
-        Hj(2, 0) = py*(vx*py - vy*px)/(pow(pow(px, 2) + pow(py, 2), 3/2));
-        Hj(2, 1) = px*(vy*px - vx*py)/(pow(pow(px, 2) + pow(py, 2), 3/2));
-        Hj(2, 2) = px/(sqrt(pow(px, 2) + pow(py, 2)));
-        Hj(2, 3) = py/(sqrt(pow(px, 2) + pow(py, 2)));
-    }
-    
+  else
+  {
+      Hj(0, 0) = px/sqrt(pythag);
+      Hj(0, 1) = py/sqrt(pythag);
+      Hj(0, 2) = 0;
+      Hj(0, 3) = 0;
+      Hj(1, 0) = -py/pythag;
+      Hj(1, 1) = px/pythag;
+      Hj(1, 2) = 0;
+      Hj(1, 3) = 0;
+      Hj(2, 0) = py*(vx*py - vy*px)/pow(pythag, 3/2);
+      Hj(2, 1) = px*(vy*px - vx*py)/pow(pythag, 3/2);
+      Hj(2, 2) = px/sqrt(pythag);
+      Hj(2, 3) = py/sqrt(pythag);
+  }
+  
 	return Hj;
 }
