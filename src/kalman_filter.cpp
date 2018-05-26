@@ -84,9 +84,6 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
   
   // Set all of the functions for each value created above
   rho = sqrt(pow(x_[0],2) + pow(x_[1],2));
-  
-  // you can always calculate rho without fear of undefined behavior
-
 
   // Check the cases of dividing by 0
   if (rho == 0) {
@@ -113,8 +110,7 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
     phi = atan2(x_[1],x_[0]);
   
     rho_dot = (rho_dot_numerator)/
-                (rho);
-                
+                (rho);  
   }
   
   // Set the polar predicted state to the translated values
