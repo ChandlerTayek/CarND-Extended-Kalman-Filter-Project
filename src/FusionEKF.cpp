@@ -39,8 +39,8 @@ FusionEKF::FusionEKF() {
   ekf_.P_ = MatrixXd(4,4);
   ekf_.P_ << 1, 0, 0, 0,
              0, 1, 0, 0,
-             0, 0, 1000, 0,
-             0, 0, 0, 1000;
+             0, 0, 1, 0,
+             0, 0, 0, 1;
   // Declare the Process noise covariance matrix
   ekf_.Q_ = MatrixXd(4,4);
   
@@ -140,7 +140,7 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
   }
 
   // print the output
-  cout << "x_ = " << ekf_.x_ << endl;
-  cout << "P_ = " << ekf_.P_ << endl;
+  // cout << "x_ = " << ekf_.x_ << endl;
+  // cout << "P_ = " << ekf_.P_ << endl;
   return;
 }
