@@ -74,7 +74,6 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
       /**
       * Convert radar from polar to cartesian coordinates and initialize state.
       */
-      cout << "Radar first" << endl;
       double P_x = measurement_pack.raw_measurements_[0] * cos(measurement_pack.raw_measurements_[1]);
       double P_y =  (measurement_pack.raw_measurements_[0] * sin(measurement_pack.raw_measurements_[1]));
       ekf_.x_ << P_x, P_y, 0, 0;
@@ -83,7 +82,6 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
       /**
       * Initialize state for a laser measurement.
       */
-      cout << "Lidar first" << endl;
       ekf_.x_ << measurement_pack.raw_measurements_[0], measurement_pack.raw_measurements_[1], 0, 0;
     }
     // Initialize frist time stamp
