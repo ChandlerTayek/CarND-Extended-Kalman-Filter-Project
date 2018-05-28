@@ -1,5 +1,5 @@
 # Extended Kalman Filter Project
-[*Self-Driving Car Engineer Nanodegree Program*](https://www.udacity.com/course/self-driving-car-engineer-nanodegree--nd013)
+[*Self-Driving Car Engineer Nanodegree Program*](https://www.udacity.com/course/self-driving-car-engineer-nanodegree--nd013) <br/>
 <a href="https://imgflip.com/gif/2b4yfg"><img src="https://i.imgflip.com/2b4yfg.gif" title="made at imgflip.com"/></a>
 
 ## About This Project
