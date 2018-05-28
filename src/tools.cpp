@@ -29,7 +29,6 @@ VectorXd Tools::CalculateRMSE(const vector<VectorXd> &estimations,
 	    cerr << "vector sizes don't match" << endl;
 	    return rmse;
 	}
-	// ... your code here
 	VectorXd residual(4);
 	VectorXd squared_res(4);
 	vector<VectorXd> squared_res_cont;
@@ -42,13 +41,11 @@ VectorXd Tools::CalculateRMSE(const vector<VectorXd> &estimations,
 	}
 
 	//calculate the mean
-	// ... your code here
-    for(int i=0; i < squared_res_cont.size(); ++i)
-        rmse += squared_res_cont[i];
-    rmse /= estimations.size();
+  for(int i=0; i < squared_res_cont.size(); ++i)
+      rmse += squared_res_cont[i];
+  rmse /= estimations.size();
 	//calculate the squared root
-	// ... your code here
-    rmse = rmse.array().sqrt();
+  rmse = rmse.array().sqrt();
 	//return the result
 	return rmse;
 }
@@ -56,15 +53,17 @@ VectorXd Tools::CalculateRMSE(const vector<VectorXd> &estimations,
 MatrixXd Tools::CalculateJacobian(const VectorXd& x_state) {
 
   MatrixXd Hj(3,4);
+  
 	//recover state parameters
 	float px = x_state(0);
 	float py = x_state(1);
 	float vx = x_state(2);
 	float vy = x_state(3);
   
-  double pythag = pow(px, 2) + pow(py, 2);
+    //pre-compute a term to avoid repeated calculation
+  float pythag = pow(px, 2) + pow(py, 2);
   
-  if(px && py == 0)
+  if(fabs(pythag) < 0.0001)
   {
       cerr << "Divide by zero" << endl;
       pythag = 0.0001;
@@ -79,8 +78,8 @@ MatrixXd Tools::CalculateJacobian(const VectorXd& x_state) {
   Hj(1, 1) = px/pythag;
   Hj(1, 2) = 0;
   Hj(1, 3) = 0;
-  Hj(2, 0) = py*(vx*py - vy*px)/pow(pythag, 3/2);
-  Hj(2, 1) = px*(vy*px - vx*py)/pow(pythag, 3/2);
+  Hj(2, 0) = py*(vx*py - vy*px)/pow(pythag, 3.0/2);
+  Hj(2, 1) = px*(vy*px - vx*py)/pow(pythag, 3.0/2);
   Hj(2, 2) = px/sqrt(pythag);
   Hj(2, 3) = py/sqrt(pythag);
 
