@@ -1,12 +1,12 @@
 # Extended Kalman Filter Project
-[*Self-Driving Car Engineer Nanodegree Program*](https://www.udacity.com/course/self-driving-car-engineer-nanodegree--nd013)
+[![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
 
-<a href="https://imgflip.com/gif/2b4yfg"><img src="https://i.imgflip.com/2b4yfg.gif" title="made at imgflip.com"/></a> <br/>
-[Click here for the full youtube video](www.youtube.com)
+<a href="https://youtu.be/G_uOwfKlPio"><img src="https://i.imgflip.com/2b4yfg.gif" title="Extended Kalman Filter Giff"/></a> <br/>
+[Click here for the full youtube video](https://youtu.be/G_uOwfKlPio)
 
 ## About This Project
-This project is an exploration of using a kalman filter to track a car driving in a figure 8 using a fusion of both radar and sensor data.
-The red dots are lidar and the blue dots with the directional arrows in them are radar.
+This project is an exploration of using an Extended Kalman Filter to track a car, in 2D, driving in a figure 8 with the fusion of both radar and sensor data.
+The red dots are lidar and the blue dots with the directional arrows in them are radar. The green triangles are the predicted positions.
 
 ## Getting Started
 To get this project up and running please follow these steps:
@@ -34,133 +34,132 @@ The minimum project dependency versions are:
   - Linux: gcc / g++ is installed by default on most Linux distros
   - Mac: same deal as make - [install Xcode command line        tools](https://developer.apple.com/xcode/features/)
   - Windows: recommend using [MinGW](http://www.mingw.org/)
-- uWebSockets (see below for installation instructions)
+- [uWebSocketIO](https://github.com/uWebSockets/uWebSockets) (jump to the operating system below uWebSockets)
 
+### uWebSocketIO Installation Guide
 
-### uWebSockets
-This repository includes two files that can be used to set up and install [uWebSocketIO](https://github.com/uWebSockets/uWebSockets) for either Linux or Mac systems. For windows you can use either Docker, VMware, or even [Windows 10 Bash on Ubuntu](https://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/) to install uWebSocketIO. Please see [this concept in the classroom](https://classroom.udacity.com/nanodegrees/nd013/parts/40f38239-66b6-46ec-ae68-03afd8a601c8/modules/0949fca6-b379-42af-a919-ee50aa304e6a/lessons/f758c44c-5e40-4e01-93b5-1a82aa4e044f/concepts/16cf4a78-4fc7-49e1-8621-3450ca938b77) for the required version and installation scripts.
+This repository includes two files that can be used to set up and install [uWebSocketIO](https://github.com/uWebSockets/uWebSockets) for either Linux or Mac systems. For windows you can use either Docker, VMware, or even [Windows 10 Bash on Ubuntu](https://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/) to install uWebSocketIO.
 
+Note: Only uWebSocketIO branch e94b6e1, which the scripts reference, is compatible with the package installation.
 
-Tips for setting up your environment can be found [here](https://classroom.udacity.com/nanodegrees/nd013/parts/40f38239-66b6-46ec-ae68-03afd8a601c8/modules/0949fca6-b379-42af-a919-ee50aa304e6a/lessons/f758c44c-5e40-4e01-93b5-1a82aa4e044f/concepts/23d376c7-0195-4276-bdf0-e02f1f3c665d)
+#### Linux Installation:
+From the project repository directory run the script: `install-ubuntu.sh`
 
+#### Mac Installation:
+From the project repository directory run the script: `install-mac.sh`
 
-- #### Windows
-The tips below may be helpful in setting up your environment and getting term 2 projects up and running. Windows 10 Users please note that Ubuntu BASH is the recommended option.
-Ubuntu BASH on Windows
-Steps
-Ensure all dependencies are present per project resources
-Follow these the instructions in the uWebSocketIO starter guide which includes instructions for setting up Ubuntu BASH.
-open Ubuntu Bash and clone the project repository
-on the command line execute ./install-ubuntu.sh
-build and run according to the instructions in the project repository README
-Trouble Shooting
-.sh files not recognized on run: Try chmod a+x <filename.sh> for example chmod a+x install-ubuntu.sh
-Messages regarding 404s, missing resources, and a variety of other error messages can be addressed by updates and other means, per this post and this post, and this post. The general steps are:
-Not all steps will be necessary, for example, installing git and cloning the project repository, if this has already been done.
-sudo apt-get update
-sudo apt-get install git
-sudo apt-get install cmake
-sudo apt-get install openssl
-sudo apt-get install libssl-dev
-git clone https://github.com/udacity/CarND-Kidnapped-Vehicle-Project or whatever CarND project
-sudo rm /usr/lib/libuWS.so
-navigate to CarND-Kidnapped-Vehicle-Project/
-./install-ubuntu.sh
-at the top level of the project repository mkdir build && cd build
-from /build cmake .. && make
-Launch the simulator from Windows and execute the run command for the project, for example ./ExtendedKF or ./particle_filter (Make sure you also run the simulator on the Windows host machine) If you see this message, it is working Listening to port 4567 Connected!!!
+Some users report needing to use cmakepatch.txt which is automatically referenced and is also located in the project repository directory.
+
+#### Windows Installation
+Although it is possible to install uWebSocketIO to native Windows, the process is quite involved. Instead, you can use one of several Linux-like environments on Windows to install and run the package.
+
+##### Bash on Windows
+One of the newest features to Windows 10 users is an Ubuntu Bash environment that works great and is easy to setup and use. Here is a nice [step by step guide](https://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/) for setting up the utility.
+
+We recommend using the newest version of Ubunut Bash 16.04, which is able to run the `install-ubuntu.sh` script without complications. The link [here](https://www.howtogeek.com/278152/how-to-update-the-windows-bash-shell/) can help you check which version of Ubuntu Bash you are running, and also help you upgrade if you need to.
+
+##### Docker
+If you don't want to use Bash on Windows, or you don't have Windows 10, then you can use a virtual machine to run a Docker image that already contains all the project dependencies.
+
+First [install Docker Toolbox for Windows.](https://docs.docker.com/toolbox/toolbox_install_windows/)
+
+Next, launch the Docker Quickstart Terminal. The default Linux virtual environment should load up. You can test that Docker is setup correctly by running `docker version` and `docker ps`.
+
+You can enter a Docker image that has all the Term 2 project dependencies by running:
+
+docker run -it -p 4567:4567 -v 'pwd':/work udacity/controls_kit:latest
+
+Once inside Docker you can clone over the GitHub project repositories and run the project from there.
+
+**Port forwarding is required when running code on VM and simulator on host**<br/>
+For security reasons, the VM does not automatically open port forwarding, so you need to manually [enable port 4567](https://www.howtogeek.com/122641/how-to-forward-ports-to-a-virtual-machine-and-use-it-as-a-server/). This is needed for the C++ program to successfully connect to the host simulator.
+
+**Port Forwarding Instructions**
+1. First open up Oracle VM VirtualBox
+2. Click on the default session and select settings.
+3. Click on Network, and then Advanced.
+4. Click on Port Forwarding
+5. Click on the green plus, adds new port forwarding rule.
+6. Add a rule that assigns 4567 as both the host port and guest Port, as in the screenshot.
+
+![alt text](port-forward-img.png)
+**Setting up port forwarding for 4567 in a Virtual Machine**
+
+---
+### Windows Troubleshooting
+The tips below may be helpful in setting up your environment and getting term 2 projects up and running. **Windows 10 Users please note that Ubuntu BASH is the recommended option.**
+
+#### Ubuntu BASH on Windows & Linux Trouble Shooting
+
+**Not all steps will be necessary, for example, installing git and cloning the project repository, if this has already been done.**
+
+1. `sudo apt-get update`
+2. `sudo apt-get install git`
+3. `sudo apt-get install cmake`
+4. `sudo apt-get install openssl`
+5. `sudo apt-get install libssl-dev`
+6. `git clone https://github.com/udacity/CarND-Kidnapped-Vehicle-Project` or whatever CarND project
+7. `sudo rm /usr/lib/libuWS.so`
+8. navigate to the top level directory of the project
+9. `./install-ubuntu.sh`
+10. at the top level of the project repository `mkdir build && cd build`
+11. from /build `cmake .. && make`
+12. Launch the simulator from Windows and execute the run command for the project, for example `./ExtendedKF` or `./particle_filter` (Make sure you also run the simulator on the Windows host machine) If you see this message, it is working `Listening to port 4567 Connected!!!`
+
 After following these steps there may be some messages regarding makefile not found or can't create symbolic link to websockets. There is likely nothing wrong with the installation. Before doing any other troubleshooting make sure that steps 10 and 11 have been executed from the top level of the project directory, then test the installation using step 12.
-Step 9 may fail for number of reasons as listed below:
-install-ubuntu.sh has only rw but no x permission. Run chmod a+x install-ubuntu.sh to give execution permission
-Cannot find the package libuv1-dev
-To install the package run sudo apt-get install libuv1.dev
-If you still cannot install the package run the following to get the package and install it:
-sudo add-apt-repository ppa:acooks/libwebsockets6
-sudo apt-get update
-sudo apt-get install libuv1.dev
-May complain about the version of cmake you have. You need a version greater than 3.0. Here is a link which describes how to get version 3.8. Look at Teocci's response in this link
-Installing cmake requires g++ compiler. Install a g++ version 4.9 or greater. Here are the steps:
-sudo add-apt-repository ppa:ubuntu-toolchain-r/test
-sudo apt-get update
-sudo apt-get install g++-4.9
-A Note Regarding Step 11 This step can fail if the bash shell is still referring to an older g++ version. To address this, please refer to this Ask Ubuntu post.
 
-Docker on Windows
-The best place to start is to follow the instructions here. A common pitfall is to not log in to the docker container. The first time you run docker run -it -p 4567:4567 -v 'pwd':/work udacity/controls_kit:latest the controls_kit may download, but the system may not log you in to the container. If you are logged in instead of a $ prompt, you should see something like this: root@27b126542a51:/work#. If you are not logged into the container commands such as apt-get and make will not be recognized, so be sure to execute docker run -it -p 4567:4567 -v 'pwd':/work udacity/controls_kit:latest again, if you do not see the correct prompt.
+**Step 9 may fail for number of reasons as listed below:**
+- `install-ubuntu.sh` has only rw but no x permission. Run `chmod a+x install-ubuntu.sh` to give execution permission
+- Cannot find the package `libuv1-dev`
+  - To install the package run `sudo apt-get install libuv1.dev`
+  - If you still cannot install the package run the following to get the package and install it:
+    - `sudo add-apt-repository ppa:acooks/libwebsockets6`
+    - `sudo apt-get update`
+    - `sudo apt-get install libuv1.dev`
 
-A thoughtful student has created a docker specific starter guide for the EKF project. The following is an abridged version.
 
-Tip regarding port forwarding when running code on vm and simulator on host
-When using a virtual machine and running the simulator on the host machine, it is critical to set up port forwarding, as described here.
+- May complain about the version of cmake you have. You need a version greater than 3.0. [Here is a link](https://askubuntu.com/questions/355565/how-do-i-install-the-latest-version-of-cmake-from-the-command-line) which describes how to get version 3.8. Look at Teocci's response in this link
+- Installing cmake requires g++ compiler. Install a g++ version 4.9 or greater. Here are the steps:
+  - `sudo add-apt-repository ppa:ubuntu-toolchain-r/test`
+  - `sudo apt-get update`
+  - `sudo apt-get install g++-4.9`
+**A Note Regarding Step 11** This step can fail if the bash shell is still referring to an older g++ version. To address this, please refer to [this Ask Ubuntu post](https://askubuntu.com/questions/428198/getting-installing-gcc-g-4-9-on-ubuntu/507068#507068).
 
-Transferring Files Between Native and Virtual Environments
+#### Docker on Windows
+The best place to start is to follow the instructions above. A common pitfall is to not log in to the docker container. The first time you run `docker run -it -p 4567:4567 -v 'pwd':/work udacity/controls_kit:latest` the controls_kit may download, but the system may not log you in to the container. If you are logged in instead of a `$` prompt, you should see something like this: `root@27b126542a51:/work#`. If you are not logged into the container commands such as `apt-get` and `make` will not be recognized, so be sure to execute `docker run -it -p 4567:4567 -v 'pwd':/work udacity/controls_kit:latest` again, if you do not see the correct prompt.
+
+A thoughtful student has created a docker specific [starter guide](https://discussions.udacity.com/t/getting-started-with-docker-and-windows-for-the-ekf-project-a-guide/320236) for the EKF project. The following is an abridged version.
+
+**Tip regarding port forwarding when running code on vm and simulator on host**
+When using a virtual machine and running the simulator on the host machine, it is critical to set up port forwarding, as described above.
+
+#### Transferring Files Between Native and Virtual Environments
 Many prefer to use text editors in Windows rather than those that ship with Ubuntu BASH or Docker (vim, nano, etc.)
 
 Options for addressing this include:
 
-All Systems: setup a git repo, edit files in Windows, push to the repo from Windows, pull the repo from the virtual environment
-Ubuntu BASH: edit files in windows, mount the c drive in Ubuntu BASH (cd /mnt /c), navigate to the files, copy to the desired location in Ubuntu BASH, navigated to the appropriate Ubuntu BASH folder
-Docker on Windows: See this starter guide for suggestions.
-Note Regarding Ubuntu Bash on Windows
+- **All Systems**: setup a git repo, edit files in Windows, push to the repo from Windows, pull the repo from the virtual environment
+- **Ubuntu BASH**: edit files in windows, mount the c drive in Ubuntu BASH (cd /mnt /c), navigate to the files, copy to the desired location in Ubuntu BASH, navigated to the appropriate Ubuntu BASH folder
+- **Docker on Windows**: See this [starter guide](https://discussions.udacity.com/t/getting-started-with-docker-and-windows-for-the-ekf-project-a-guide/320236) for suggestions.
+
+**Note Regarding Ubuntu Bash on Windows**
 The Ubuntu Bash system can be accessed from Windows, any files altered in this way may no longer be recognizable by Ubuntu BASH. This often manifest itself in the file disappearing from Ubuntu BASH.
 
-IDE Profile to Develop Natively in Windows with Visual Studio
+##### IDE Profile to Develop Natively in Windows with Visual Studio
 A student contributed IDE profile can be found here. More detail can be found here
--#### Linux
-Steps
-Ensure all dependencies are present per project resources
-Clone the project repository
-Follow these the instructions in the uWebSocketIO starter guide (From the project repository directory run the script: install-ubuntu.sh.
-on the command line execute ./install-ubuntu.sh
-build and run according to the instructions in the project repository README
-Trouble Shooting
-These steps are similar to those with Ubuntu BASH on Windows 10, above.
-
-.sh files not recognized on run: Try chmod a+x <filename.sh> for example chmod a+x install-ubuntu.sh
-Messages regarding 404s, missing resources, and a variety of other error messages can be addressed by updates and other means, per this post and this post, and this post. The general steps are:
-Not all steps will be necessary, for example, installing git and cloning the project repository, if this has already been done.
-
-sudo apt-get update
-sudo apt-get install git
-sudo apt-get install cmake
-sudo apt-get install openssl
-sudo apt-get install libssl-dev
-git clone https://github.com/udacity/CarND-Kidnapped-Vehicle-Project or whatever CarND project
-sudo rm /usr/lib/libuWS.so
-navigate to CarND-Kidnapped-Vehicle-Project/
-./install-ubuntu.sh
-at the top level of the project repository mkdir build && cd build
-from /build cmake .. && make
-Launch the simulator from Windows and execute the run command for the project, for example ./ExtendedKF or ./particle_filter (Make sure you also run the simulator) If you see this message, it is working Listening to port 4567 Connected!!!
-After following these steps there may be some messages regarding makefile not found or can't create symbolic link to websockets. There is likely nothing wrong with the installation. Before doing any other troubleshooting make sure that steps 10 and 11 have been executed from the top level of the project directory, then test the installation using step 12.
-
-Step 9 may fail for number of reasons as listed below:
-
-install-ubuntu.sh has only rw but no x permission. Run chmod a+x install-ubuntu.sh to give execution permission
-Cannot find the package libuv1-dev
-To install the package run sudo apt-get install libuv1.dev
-If you still cannot install the package run the following to get the package and install it:
-sudo add-apt-repository ppa:acooks/libwebsockets6
-sudo apt-get update
-sudo apt-get install libuv1.dev
-May complain about the version of cmake you have. You need a version greater than 3.0. Here is a link which describes how to get version 3.8. Look at Teocci's response in this link
-Installing cmake requires g++ compiler. Install a g++ version 4.9 or greater. Here are the steps:
-sudo add-apt-repository ppa:ubuntu-toolchain-r/test
-sudo apt-get update
-sudo apt-get install g++-4.9
-A Note Regarding Step 11 This step can fail if the bash shell is still referring to an older g++ version. To address this, please refer to this Ask Ubuntu post.
 
 
-- #### Mac
+#### Mac
 For most instances of missing packages and messages regarding uWebsockets, refer to Linux and Windows troubleshooting. Below are some common issues and their solutions.
   - **.sh files not recognized on run**: Try chmod a+x for example `chmod a+x install-mac.sh`
   - **missing** `openssl`, `libuv`, or `cmake`: install-mac.sh contains the line `brew install openssl libuv cmake`, which will not execute properly if `homebrew` is not installed. To determine if `homebrew` is installed, execute `which brew` in a terminal. If a path returns it is installed, otherwise you see `brew not found`. Follow the guidance [here](https://brew.sh/) to install homebrew, then try running `install-mac.sh` again.
   - If the step above does not resolve issues regarding openssl, please try the guidance provided [here], here and (https://github.com/udacity/CarND-PID-Control-Project/issues/2) and here
-  - **Issues with rootless mode in recent versions of OSx**: Some recent versions of OSx have a rootless mode by default that cause some install script commands to fail, even when running as root or sudo. To disable this reboot in recovery mode (command+R), and execute csrutil disable in a terminal. After this is complete, try running the install script.
+  - **Issues with rootless mode in recent versions of OSx**: Some recent versions of OSx have a rootless mode by default that cause some install script commands to fail, even when running as root or sudo. To disable this reboot in recovery mode (`command+R`), and execute `csrutil disable` in a terminal. After this is complete, try running the install script.
+  
 After following these steps there may be some messages regarding makefile not found or can't create symbolic link to websockets. There is likely nothing wrong with the installation. Before doing any other troubleshooting make sure that build steps (10 and 11 from Windows and Linux instructions) have been executed from the top level of the project directory, then test the installation using running the code (step 12 from Windows and Linux instructions).
 
-Tip regarding port forwarding when running code on vm and simulator on host
-When using a virtual machine and running the simulator on the host machine, it is critical to set up port forwarding, as described here.
+**Tip regarding port forwarding when running code on vm and simulator on host**
+When using a virtual machine and running the simulator on the host machine, it is critical to set up port forwarding, as described above.
 Note that the programs that need to be written to accomplish the project are src/FusionEKF.cpp, src/FusionEKF.h, kalman_filter.cpp, kalman_filter.h, tools.cpp, and tools.h
 
 
@@ -181,6 +180,10 @@ OUTPUT: values provided by the c++ program to the simulator
 ["rmse_vx"]
 ["rmse_vy"]
 
+## Known Issue: Rapid Expansion of Log Files
+* Some people have reported rapid expansion of log files when using the simulator.  This appears to be associated with not being connected to uWebSockets.  If this does occur,  please make sure you are conneted to uWebSockets. The following workaround may also be effective at preventing large log files.
+    + create an empty log file
+    + remove write permissions so that the simulator can't write to log
 
 ---
 
@@ -188,10 +191,7 @@ OUTPUT: values provided by the c++ program to the simulator
 [MIT License](https://opensource.org/licenses/MIT)<br/>
 Note: This project was from a Udacity course.
 
-## Known Issue: Rapid Expansion of Log Files
-* Some people have reported rapid expansion of log files when using the simulator.  This appears to be associated with not being connected to uWebSockets.  If this does occur,  please make sure you are conneted to uWebSockets. The following workaround may also be effective at preventing large log files.
-    + create an empty log file
-    + remove write permissions so that the simulator can't write to log
+
 
 ## Related information on EKF's
 - [Tutioral](http://home.wlu.edu/~levys/kalman_tutorial/)
