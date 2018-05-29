@@ -5,7 +5,7 @@
 [Click here for the full youtube video](https://youtu.be/G_uOwfKlPio)
 
 ## About This Project
-This project is an exploration of using an Extended Kalman Filter to track a car, in 2D, driving in a figure 8 with the fusion of both radar and sensor data.
+This project is an exploration of using an Extended Kalman Filter to track a car in 2D. The filter uses the fusion of both radar and sensor data in order to track the (x,y) position and (Vx,Vy) velocity.
 The red dots are lidar and the blue dots with the directional arrows in them are radar. The green triangles are the predicted positions.
 
 ## Getting Started
@@ -17,8 +17,8 @@ To get this project up and running please follow these steps:
 5. Compile: `cmake .. && make`
 6. Run it: ./ExtendedKF`
 7. Open the simulator and select the first option "Project 1/2: EKF and UKF"
-8. Select which dataset to use then click start to watch the car go. <br/>
-*Note: Start from option 6 if you want to program again as the restart button doesn't clear out the memory..*
+8. Select which dataset to use then click start. <br/>
+*Note: Start from option 6 if you want run the simulation again.*
 
 
 ## Dependencies
@@ -86,7 +86,7 @@ For security reasons, the VM does not automatically open port forwarding, so you
 **Setting up port forwarding for 4567 in a Virtual Machine**
 
 ---
-### Windows Troubleshooting
+### Troubleshooting
 The tips below may be helpful in setting up your environment and getting term 2 projects up and running. **Windows 10 Users please note that Ubuntu BASH is the recommended option.**
 
 #### Ubuntu BASH on Windows & Linux Trouble Shooting
@@ -128,7 +128,6 @@ After following these steps there may be some messages regarding makefile not fo
 #### Docker on Windows
 The best place to start is to follow the instructions above. A common pitfall is to not log in to the docker container. The first time you run `docker run -it -p 4567:4567 -v 'pwd':/work udacity/controls_kit:latest` the controls_kit may download, but the system may not log you in to the container. If you are logged in instead of a `$` prompt, you should see something like this: `root@27b126542a51:/work#`. If you are not logged into the container commands such as `apt-get` and `make` will not be recognized, so be sure to execute `docker run -it -p 4567:4567 -v 'pwd':/work udacity/controls_kit:latest` again, if you do not see the correct prompt.
 
-A thoughtful student has created a docker specific [starter guide](https://discussions.udacity.com/t/getting-started-with-docker-and-windows-for-the-ekf-project-a-guide/320236) for the EKF project. The following is an abridged version.
 
 **Tip regarding port forwarding when running code on vm and simulator on host**
 When using a virtual machine and running the simulator on the host machine, it is critical to set up port forwarding, as described above.
@@ -146,14 +145,14 @@ Options for addressing this include:
 The Ubuntu Bash system can be accessed from Windows, any files altered in this way may no longer be recognizable by Ubuntu BASH. This often manifest itself in the file disappearing from Ubuntu BASH.
 
 ##### IDE Profile to Develop Natively in Windows with Visual Studio
-A student contributed IDE profile can be found here. More detail can be found here
+A student contributed IDE profile can be found [here](https://github.com/fkeidel/CarND-Term2-ide-profile-VisualStudio). More detail can be found [here](https://github.com/fkeidel/CarND-Term2-ide-profile-VisualStudio)
 
 
 #### Mac
 For most instances of missing packages and messages regarding uWebsockets, refer to Linux and Windows troubleshooting. Below are some common issues and their solutions.
   - **.sh files not recognized on run**: Try chmod a+x for example `chmod a+x install-mac.sh`
   - **missing** `openssl`, `libuv`, or `cmake`: install-mac.sh contains the line `brew install openssl libuv cmake`, which will not execute properly if `homebrew` is not installed. To determine if `homebrew` is installed, execute `which brew` in a terminal. If a path returns it is installed, otherwise you see `brew not found`. Follow the guidance [here](https://brew.sh/) to install homebrew, then try running `install-mac.sh` again.
-  - If the step above does not resolve issues regarding openssl, please try the guidance provided [here], here and (https://github.com/udacity/CarND-PID-Control-Project/issues/2) and here
+  - If the step above does not resolve issues regarding openssl, please try the guidance provided [here](https://github.com/udacity/CarND-PID-Control-Project/issues/2)
   - **Issues with rootless mode in recent versions of OSx**: Some recent versions of OSx have a rootless mode by default that cause some install script commands to fail, even when running as root or sudo. To disable this reboot in recovery mode (`command+R`), and execute `csrutil disable` in a terminal. After this is complete, try running the install script.
   
 After following these steps there may be some messages regarding makefile not found or can't create symbolic link to websockets. There is likely nothing wrong with the installation. Before doing any other troubleshooting make sure that build steps (10 and 11 from Windows and Linux instructions) have been executed from the top level of the project directory, then test the installation using running the code (step 12 from Windows and Linux instructions).
