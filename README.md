@@ -66,7 +66,7 @@ Although it is possible to install uWebSocketIO to native Windows, the process i
 ##### Bash on Windows
 One of the newest features to Windows 10 users is an Ubuntu Bash environment that works great and is easy to setup and use. Here is a nice [step by step guide](https://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/) for setting up the utility.
 
-We recommend using the newest version of Ubunut Bash 16.04, which is able to run the `install-ubuntu.sh` script without complications. The link [here](https://www.howtogeek.com/278152/how-to-update-the-windows-bash-shell/) can help you check which version of Ubuntu Bash you are running, and also help you upgrade if you need to.
+We recommend using the newest version of Ubunut Bash 16.04, which is able to run the `install-ubuntu.sh` script without complications. The link [here](https://www.howtogeek.com/278152/how-to-update-the-windows-bash-shell/) can help you check which version of Ubuntu Bash you are running, and also help you upgrade if you need to. Once you have installed bash nagivgate to the project repository directory and run the script: `install-ubuntu.sh`
 
 ##### Docker
 If you don't want to use Bash on Windows, or you don't have Windows 10, then you can use a virtual machine to run a Docker image that already contains all the project dependencies.
