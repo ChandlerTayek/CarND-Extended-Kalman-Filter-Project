@@ -141,7 +141,7 @@ Options for addressing this include:
 - **Ubuntu BASH**: edit files in windows, mount the c drive in Ubuntu BASH (cd /mnt /c), navigate to the files, copy to the desired location in Ubuntu BASH, navigated to the appropriate Ubuntu BASH folder
 - **Docker on Windows**: See this [starter guide](https://discussions.udacity.com/t/getting-started-with-docker-and-windows-for-the-ekf-project-a-guide/320236) for suggestions.
 
-**Note Regarding Ubuntu Bash on Windows**
+**Note Regarding Ubuntu Bash on Windows**<br/>
 The Ubuntu Bash system can be accessed from Windows, any files altered in this way may no longer be recognizable by Ubuntu BASH. This often manifest itself in the file disappearing from Ubuntu BASH.
 
 ##### IDE Profile to Develop Natively in Windows with Visual Studio
