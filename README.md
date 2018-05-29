@@ -126,7 +126,7 @@ After following these steps there may be some messages regarding makefile not fo
 **A Note Regarding Step 11** This step can fail if the bash shell is still referring to an older g++ version. To address this, please refer to [this Ask Ubuntu post](https://askubuntu.com/questions/428198/getting-installing-gcc-g-4-9-on-ubuntu/507068#507068).
 
 #### Docker on Windows
-The best place to start is to follow the instructions above. A common pitfall is to not log in to the docker container. The first time you run `docker run -it -p 4567:4567 -v 'pwd':/work udacity/controls_kit:latest` the controls_kit may download, but the system may not log you in to the container. If you are logged in instead of a `$` prompt, you should see something like this: `root@27b126542a51:/work#`. If you are not logged into the container commands such as `apt-get` and `make` will not be recognized, so be sure to execute `docker run -it -p 4567:4567 -v 'pwd':/work udacity/controls_kit:latest` again, if you do not see the correct prompt.
+A common pitfall is to not log in to the docker container. The first time you run `docker run -it -p 4567:4567 -v 'pwd':/work udacity/controls_kit:latest` the controls_kit may download, but the system may not log you in to the container. If you are logged in instead of a `$` prompt, you should see something like this: `root@27b126542a51:/work#`. If you are not logged into the container commands such as `apt-get` and `make` will not be recognized, so be sure to execute `docker run -it -p 4567:4567 -v 'pwd':/work udacity/controls_kit:latest` again, if you do not see the correct prompt.
 
 
 **Tip regarding port forwarding when running code on vm and simulator on host**
@@ -159,19 +159,13 @@ After following these steps there may be some messages regarding makefile not fo
 
 **Tip regarding port forwarding when running code on vm and simulator on host**
 When using a virtual machine and running the simulator on the host machine, it is critical to set up port forwarding, as described above.
-Note that the programs that need to be written to accomplish the project are src/FusionEKF.cpp, src/FusionEKF.h, kalman_filter.cpp, kalman_filter.h, tools.cpp, and tools.h
 
 
 
-Here is the main protcol that main.cpp uses for uWebSocketIO in communicating with the simulator.
-
-INPUT: values provided by the simulator to the c++ program
-
-["sensor_measurement"] => the measurement that the simulator observed (either lidar or radar)
-
-
-OUTPUT: values provided by the c++ program to the simulator
-
+##### Here is the main protcol that main.cpp uses for uWebSocketIO in communicating with the simulator.<br/>
+INPUT: values provided by the simulator to the c++ program<br/>
+["sensor_measurement"] => the measurement that the simulator observed (either lidar or radar)<br/>
+OUTPUT: values provided by the c++ program to the simulator<br/>
 ["estimate_x"] <= kalman filter estimated position x
 ["estimate_y"] <= kalman filter estimated position y
 ["rmse_x"]
@@ -179,7 +173,7 @@ OUTPUT: values provided by the c++ program to the simulator
 ["rmse_vx"]
 ["rmse_vy"]
 
-## Known Issue: Rapid Expansion of Log Files
+### Known Issue: Rapid Expansion of Log Files
 * Some people have reported rapid expansion of log files when using the simulator.  This appears to be associated with not being connected to uWebSockets.  If this does occur,  please make sure you are conneted to uWebSockets. The following workaround may also be effective at preventing large log files.
     + create an empty log file
     + remove write permissions so that the simulator can't write to log
