@@ -5,7 +5,7 @@
 [Click here for the full youtube video](https://youtu.be/G_uOwfKlPio)
 
 ## About This Project
-This project uses an Extended Kalman Filter to track a car in 2D. The filter uses the fusion of both radar and sensor data in order to track the (x,y) position and (Vx,Vy) velocity.
+This project uses an Extended Kalman Filter to track a car in 2D. The filter fuses both radar and sensor data in order to track the (x,y) position and (Vx,Vy) velocity.
 The red dots are lidar and the blue dots with the directional arrows in them are radar. The green triangles are the predicted positions.
 
 ## Getting Started
@@ -20,7 +20,7 @@ To get this project up and running please follow these steps:
 8. Select which dataset to use then click start. <br/>
 *Note: Start from option 6 if you want run the simulation again.*
 
-##### Here is the main protcol that main.cpp uses for uWebSocketIO in communicating with the simulator.<br/>
+### Here is the main protcol that main.cpp uses for uWebSocketIO in communicating with the simulator.<br/>
 INPUT: values provided by the simulator to the c++ program<br/>
 ["sensor_measurement"] => the measurement that the simulator observed (either lidar or radar)<br/>
 OUTPUT: values provided by the c++ program to the simulator<br/>
@@ -148,7 +148,7 @@ The Ubuntu Bash system can be accessed from Windows, any files altered in this w
 ##### IDE Profile to Develop Natively in Windows with Visual Studio
 A student contributed IDE profile can be found [here](https://github.com/fkeidel/CarND-Term2-ide-profile-VisualStudio).
 
-### Mac
+#### Mac
 For most instances of missing packages and messages regarding uWebsockets, refer to Linux and Windows troubleshooting. Below are some common issues and their solutions.
   - **.sh files not recognized on run**: Try chmod a+x for example `chmod a+x install-mac.sh`
   - **missing** `openssl`, `libuv`, or `cmake`: install-mac.sh contains the line `brew install openssl libuv cmake`, which will not execute properly if `homebrew` is not installed. To determine if `homebrew` is installed, execute `which brew` in a terminal. If a path returns it is installed, otherwise you see `brew not found`. Follow the guidance [here](https://brew.sh/) to install homebrew, then try running `install-mac.sh` again.
@@ -166,14 +166,10 @@ Some people have reported rapid expansion of log files when using the simulator.
 + remove write permissions so that the simulator can't write to log
 
 ---
-
-## License
-[MIT License](https://opensource.org/licenses/MIT)<br/>
-Note: This project was from a Udacity course.
-
-
-
 ## Related information on EKF's
 - [Tutioral](http://home.wlu.edu/~levys/kalman_tutorial/)
 - [Slide show](http://biorobotics.ri.cmu.edu/papers/sbp_papers/integrated3/kleeman_kalman_basics.pdf)
 
+## License
+[MIT License](https://opensource.org/licenses/MIT)<br/>
+Note: This project was from a Udacity course.
