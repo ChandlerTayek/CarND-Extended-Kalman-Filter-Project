@@ -5,7 +5,7 @@
 [Click here for the full youtube video](https://youtu.be/G_uOwfKlPio)
 
 ## About This Project
-This project is an exploration of using an Extended Kalman Filter to track a car in 2D. The filter uses the fusion of both radar and sensor data in order to track the (x,y) position and (Vx,Vy) velocity.
+This project uses an Extended Kalman Filter to track a car in 2D. The filter uses the fusion of both radar and sensor data in order to track the (x,y) position and (Vx,Vy) velocity.
 The red dots are lidar and the blue dots with the directional arrows in them are radar. The green triangles are the predicted positions.
 
 ## Getting Started
@@ -20,6 +20,16 @@ To get this project up and running please follow these steps:
 8. Select which dataset to use then click start. <br/>
 *Note: Start from option 6 if you want run the simulation again.*
 
+##### Here is the main protcol that main.cpp uses for uWebSocketIO in communicating with the simulator.<br/>
+INPUT: values provided by the simulator to the c++ program<br/>
+["sensor_measurement"] => the measurement that the simulator observed (either lidar or radar)<br/>
+OUTPUT: values provided by the c++ program to the simulator<br/>
+["estimate_x"] <= kalman filter estimated position x<br/>
+["estimate_y"] <= kalman filter estimated position y<br/>
+["rmse_x"]<br/>
+["rmse_y"]<br/>
+["rmse_vx"]<br/>
+["rmse_vy"]<br/>
 
 ## Dependencies
 The minimum project dependency versions are:
@@ -129,26 +139,16 @@ After following these steps there may be some messages regarding makefile not fo
 A common pitfall is to not log in to the docker container. The first time you run `docker run -it -p 4567:4567 -v 'pwd':/work udacity/controls_kit:latest` the controls_kit may download, but the system may not log you in to the container. If you are logged in instead of a `$` prompt, you should see something like this: `root@27b126542a51:/work#`. If you are not logged into the container commands such as `apt-get` and `make` will not be recognized, so be sure to execute `docker run -it -p 4567:4567 -v 'pwd':/work udacity/controls_kit:latest` again, if you do not see the correct prompt.
 
 
-**Tip regarding port forwarding when running code on vm and simulator on host**
+**Tip regarding port forwarding when running code on vm and simulator on host**<br/>
 When using a virtual machine and running the simulator on the host machine, it is critical to set up port forwarding, as described above.
-
-#### Transferring Files Between Native and Virtual Environments
-Many prefer to use text editors in Windows rather than those that ship with Ubuntu BASH or Docker (vim, nano, etc.)
-
-Options for addressing this include:
-
-- **All Systems**: setup a git repo, edit files in Windows, push to the repo from Windows, pull the repo from the virtual environment
-- **Ubuntu BASH**: edit files in windows, mount the c drive in Ubuntu BASH (cd /mnt /c), navigate to the files, copy to the desired location in Ubuntu BASH, navigated to the appropriate Ubuntu BASH folder
-- **Docker on Windows**: See this [starter guide](https://discussions.udacity.com/t/getting-started-with-docker-and-windows-for-the-ekf-project-a-guide/320236) for suggestions.
 
 **Note Regarding Ubuntu Bash on Windows**<br/>
 The Ubuntu Bash system can be accessed from Windows, any files altered in this way may no longer be recognizable by Ubuntu BASH. This often manifest itself in the file disappearing from Ubuntu BASH.
 
 ##### IDE Profile to Develop Natively in Windows with Visual Studio
-A student contributed IDE profile can be found [here](https://github.com/fkeidel/CarND-Term2-ide-profile-VisualStudio). More detail can be found [here](https://github.com/fkeidel/CarND-Term2-ide-profile-VisualStudio)
+A student contributed IDE profile can be found [here](https://github.com/fkeidel/CarND-Term2-ide-profile-VisualStudio).
 
-
-#### Mac
+### Mac
 For most instances of missing packages and messages regarding uWebsockets, refer to Linux and Windows troubleshooting. Below are some common issues and their solutions.
   - **.sh files not recognized on run**: Try chmod a+x for example `chmod a+x install-mac.sh`
   - **missing** `openssl`, `libuv`, or `cmake`: install-mac.sh contains the line `brew install openssl libuv cmake`, which will not execute properly if `homebrew` is not installed. To determine if `homebrew` is installed, execute `which brew` in a terminal. If a path returns it is installed, otherwise you see `brew not found`. Follow the guidance [here](https://brew.sh/) to install homebrew, then try running `install-mac.sh` again.
@@ -157,26 +157,13 @@ For most instances of missing packages and messages regarding uWebsockets, refer
   
 After following these steps there may be some messages regarding makefile not found or can't create symbolic link to websockets. There is likely nothing wrong with the installation. Before doing any other troubleshooting make sure that build steps (10 and 11 from Windows and Linux instructions) have been executed from the top level of the project directory, then test the installation using running the code (step 12 from Windows and Linux instructions).
 
-**Tip regarding port forwarding when running code on vm and simulator on host**
-When using a virtual machine and running the simulator on the host machine, it is critical to set up port forwarding, as described above.
 
 
-
-##### Here is the main protcol that main.cpp uses for uWebSocketIO in communicating with the simulator.<br/>
-INPUT: values provided by the simulator to the c++ program<br/>
-["sensor_measurement"] => the measurement that the simulator observed (either lidar or radar)<br/>
-OUTPUT: values provided by the c++ program to the simulator<br/>
-["estimate_x"] <= kalman filter estimated position x
-["estimate_y"] <= kalman filter estimated position y
-["rmse_x"]
-["rmse_y"]
-["rmse_vx"]
-["rmse_vy"]
 
 ### Known Issue: Rapid Expansion of Log Files
-* Some people have reported rapid expansion of log files when using the simulator.  This appears to be associated with not being connected to uWebSockets.  If this does occur,  please make sure you are conneted to uWebSockets. The following workaround may also be effective at preventing large log files.
-    + create an empty log file
-    + remove write permissions so that the simulator can't write to log
+Some people have reported rapid expansion of log files when using the simulator.  This appears to be associated with not being connected to uWebSockets.  If this does occur,  please make sure you are conneted to uWebSockets. The following workaround may also be effective at preventing large log files.
++ create an empty log file
++ remove write permissions so that the simulator can't write to log
 
 ---
 
