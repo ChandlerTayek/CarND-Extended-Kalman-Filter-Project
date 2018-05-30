@@ -1,5 +1,5 @@
-#ifndef MEASUREMENT_PACKAGE_H_
-#define MEASUREMENT_PACKAGE_H_
+#ifndef CarND_Extended_Kalman_Filter_Project_MEASUREMENT_PACKAGE_H_
+#define CarND_Extended_Kalman_Filter_Project_MEASUREMENT_PACKAGE_H_
 
 #include "Eigen/Dense"
 
@@ -15,4 +15,4 @@ public:
   Eigen::VectorXd raw_measurements_;
 };
 
-#endif /* MEASUREMENT_PACKAGE_H_ */
+#endif /* CarND_Extended_Kalman_Filter_Project_MEASUREMENT_PACKAGE_H_ */

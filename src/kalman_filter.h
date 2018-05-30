@@ -1,5 +1,5 @@
-#ifndef CarND-Extended-Kalman-Filter-Project_KALMAN_FILTER_H_
-#define CarND-Extended-Kalman-Filter-Project_KALMAN_FILTER_H_
+#ifndef CarND_Extended_Kalman_Filter_Project_KALMAN_FILTER_H_
+#define CarND_Extended_Kalman_Filter_Project_KALMAN_FILTER_H_
 
 #include "Eigen/Dense"
 
@@ -74,4 +74,4 @@ private:
   const double pi = 3.1415926535897;
 };
 
-#endif /* KALMAN_FILTER_H_ */
+#endif /* CarND_Extended_Kalman_Filter_Project */

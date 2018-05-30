@@ -1,5 +1,5 @@
-#ifndef CarND-Extended-Kalman-Filter-Project_FusionEKF_H_
-#define CarND-Extended-Kalman-Filter-Project_FusionEKF_H_
+#ifndef CarND_Extended_Kalman_Filter_Project_FusionEKF_H_
+#define CarND_Extended_Kalman_Filter_Project_FusionEKF_H_
 
 #include <fstream>
 #include <string>
@@ -48,4 +48,4 @@ private:
   Eigen::MatrixXd Hj_;
 };
 
-#endif /* FusionEKF_H_ */
+#endif /* CarND_Extended_Kalman_Filter_Project_FusionEKF_H_ */

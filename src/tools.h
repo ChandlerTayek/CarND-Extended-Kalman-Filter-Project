@@ -1,5 +1,5 @@
-#ifndef CarND-Extended-Kalman-Filter-Project_TOOLS_H_
-#define CarND-Extended-Kalman-Filter-Project_TOOLS_H_
+#ifndef CarND_Extended_Kalman_Filter_Project_TOOLS_H_
+#define CarND_Extended_Kalman_Filter_Project_TOOLS_H_
 
 #include <vector>
 
@@ -33,4 +33,4 @@ public:
 
 };
 
-#endif /* TOOLS_H_ */
+#endif /* CarND_Extended_Kalman_Filter_Project_TOOLS_H_ */
