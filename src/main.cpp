@@ -1,8 +1,11 @@
 #include <uWS/uWS.h>
+
 #include <iostream>
-#include "json.hpp"
+
 #include <math.h>
+
 #include "FusionEKF.h"
+#include "json.hpp"
 #include "tools.h"
 
 using namespace std;

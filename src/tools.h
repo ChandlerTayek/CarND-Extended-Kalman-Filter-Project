@@ -1,6 +1,8 @@
-#ifndef TOOLS_H_
-#define TOOLS_H_
+#ifndef CarND-Extended-Kalman-Filter-Project_TOOLS_H_
+#define CarND-Extended-Kalman-Filter-Project_TOOLS_H_
+
 #include <vector>
+
 #include "Eigen/Dense"
 
 using Eigen::MatrixXd;

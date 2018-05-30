@@ -1,13 +1,15 @@
-#ifndef FusionEKF_H_
-#define FusionEKF_H_
+#ifndef CarND-Extended-Kalman-Filter-Project_FusionEKF_H_
+#define CarND-Extended-Kalman-Filter-Project_FusionEKF_H_
 
-#include "measurement_package.h"
-#include "Eigen/Dense"
-#include <vector>
-#include <string>
 #include <fstream>
+#include <string>
+#include <vector>
+
 #include "kalman_filter.h"
+#include "Eigen/Dense"
+#include "measurement_package.h"
 #include "tools.h"
+
 
 class FusionEKF {
 public:

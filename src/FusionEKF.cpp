@@ -1,7 +1,11 @@
+#include "Eigen/Dense"
+
+#include <iostream>
+
 #include "FusionEKF.h"
 #include "tools.h"
-#include "Eigen/Dense"
-#include <iostream>
+
+
 
 using namespace std;
 using Eigen::MatrixXd;
