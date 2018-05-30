@@ -172,4 +172,3 @@ Some people have reported rapid expansion of log files when using the simulator.
 
 ## License
 [MIT License](https://opensource.org/licenses/MIT)<br/>
-Note: This project was from a Udacity course.
